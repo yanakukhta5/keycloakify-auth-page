@@ -12,11 +12,13 @@
         "build": "tsc && vite build",
         "build-keycloak-theme": "npm run build && keycloakify build",
         "storybook": "storybook dev -p 6006",
-        "format": "prettier . --write"
+        "format": "prettier . --write",
+        "keycloak": "npx keycloakify start-keycloak --keycloak-version 25.0.4"
     },
     "license": "MIT",
     "keywords": [],
     "dependencies": {
+        "flowbite": "^2.5.1",
         "keycloakify": "10.0.0-rc.147",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
