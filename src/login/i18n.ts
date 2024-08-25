@@ -1,12 +1,36 @@
 import { createUseI18n } from "keycloakify/login";
 
 export const { useI18n, ofTypeI18n } = createUseI18n({
-    en: {
-        kermi: "kermi"
-    },
-    ru: {
-        kermi: "керми"
-    }
+  en: {
+    login: 'Login',
+    signIn: "Sign in to your account",
+    password: "Password",
+    rememberMe: "Remember me",
+    forgotPassword: "Forgot password?",
+    noAccount: "Don’t have an account yet?",
+    signUp: "Sign up",
+    signInShort: "Sign in",
+    projectInfo: "Integrating keycloack into the frontend",
+    projectDescr: 'Used keycloakify along with tailwind css and flowbite',
+    author: 'Made by Yana Kukhta',
+    authorDescr: 'My other works can be viewed on my github profile',
+    dockerDescr: 'To view it you need to run docker-container'
+  },
+  ru: {
+    login: 'Логин',
+    signIn: "Войти в аккаунт",
+    password: "Пароль",
+    rememberMe: "Запомнить меня",
+    forgotPassword: "Забыли пароль?",
+    noAccount: "У Вас нет аккаунта?",
+    signUp: "Зарегистрироваться",
+    signInShort: "Войти",
+    projectInfo: "Интеграция keycloack во фронтенд",
+    projectDescr: "Использовался keycloakify вместе с tailwind css и flowbite",
+    author: 'Сделала Яна Кухта',
+    authorDescr: 'Другие мои работы можно посмотреть на моём профиле в github',
+    dockerDescr: 'Для просмотра необходимо поднять docker-container'
+  }
 });
 
 export type I18n = typeof ofTypeI18n;
