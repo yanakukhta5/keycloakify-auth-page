@@ -7,6 +7,7 @@ export default defineConfig({
     plugins: [
         react(),
         keycloakify({
+            extraThemeProperties: ["locales=ru,en"],
             accountThemeImplementation: "none"
         })
     ]
