@@ -14,7 +14,16 @@ export const { useI18n, ofTypeI18n } = createUseI18n({
     projectDescr: 'Used keycloakify along with tailwind css and flowbite',
     author: 'Made by Yana Kukhta',
     authorDescr: 'My other works can be viewed on my github profile',
-    dockerDescr: 'To view it you need to run docker-container'
+    dockerDescr: 'To view it you need to run docker-container',
+    createUser: 'Create new user',
+    email: "Email address",
+    confirmPassword: 'Confirm password',
+    firstName: 'Fist name',
+    lastName: 'Last name',
+    phoneNumber: 'Phone number',
+    company: 'Company',
+    register: 'Register',
+    haveAccount: 'Have an account?'
   },
   ru: {
     login: 'Логин',
@@ -29,7 +38,16 @@ export const { useI18n, ofTypeI18n } = createUseI18n({
     projectDescr: "Использовался keycloakify вместе с tailwind css и flowbite",
     author: 'Сделала Яна Кухта',
     authorDescr: 'Другие мои работы можно посмотреть на моём профиле в github',
-    dockerDescr: 'Для просмотра необходимо поднять docker-container'
+    dockerDescr: 'Для просмотра необходимо поднять docker-container',
+    createUser: 'Создание нового пользователя',
+    email: "Email адрес",
+    confirmPassword: 'Подтвеердите пароль',
+    firstName: 'Имя',
+    lastName: 'Фамилия',
+    phoneNumber: 'Номер телефона',
+    company: 'Организация',
+    register: 'Зарегистрироваться',
+    haveAccount: 'Уже есть аккаунт?'
   }
 });
 

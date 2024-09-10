@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.kcHeaderClass {
+ display: none;
+}
+
+.kcLocaleMainClass {
+ display: none;
+}

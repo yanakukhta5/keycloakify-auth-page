@@ -1,4 +1,4 @@
-import type { I18n } from "./i18n";
+import type { I18n } from "../../i18n";
 
 type Props = {
   i18n: I18n
