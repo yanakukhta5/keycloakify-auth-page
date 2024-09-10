@@ -1,6 +1,7 @@
 import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
+import { LangSelect } from "../components/lang-select";
 
 export default function Register(props: PageProps<Extract<KcContext, { pageId: "register.ftl" }>, I18n>) {
   const { kcContext, i18n, Template } = props;
@@ -12,7 +13,11 @@ export default function Register(props: PageProps<Extract<KcContext, { pageId: "
   return (
     <Template kcContext={kcContext} i18n={i18n} doUseDefaultCss={false} headerNode={null}>
       <div>
-        <h1 className="text-center mt-[90px] mb-[30px] font-bold text-2xl">{msgStr("createUser")}</h1>
+        <div className="flex justify-center items-center gap-6 mt-[90px] mb-[30px]">
+          <h1 className="text-center font-bold text-2xl">{msgStr("createUser")}</h1>
+
+          <LangSelect {...props} />
+        </div>
 
         <form>
           <div className="flex justify-between w-[1200px] mx-auto">

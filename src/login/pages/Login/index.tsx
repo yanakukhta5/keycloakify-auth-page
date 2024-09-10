@@ -1,23 +1,18 @@
-import { assert } from "keycloakify/tools/assert";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
-import { getKcClsx } from "keycloakify/login/lib/kcClsx";
-import { clsx } from "keycloakify/tools/clsx";
 
 import type { I18n } from "../../i18n";
 import type { KcContext } from "../../KcContext";
 import { Text } from "./Text";
+import { LangSelect } from "../../components/lang-select";
 
 export default function Login(
   props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>
 ) {
-  const { kcContext, i18n, doUseDefaultCss, classes, Template } = props;
+  const { kcContext, i18n, Template } = props;
 
-  const { kcClsx } = getKcClsx({ doUseDefaultCss, classes });
+  const { msgStr } = i18n;
 
-  const { msgStr, getChangeLocaleUrl, labelBySupportedLanguageTag, currentLanguageTag } =
-    i18n;
-
-  const { realm, locale, url } = kcContext;
+  const { realm, url } = kcContext;
 
   return (
     <Template kcContext={kcContext} i18n={i18n} doUseDefaultCss={false} headerNode={null}>
@@ -32,59 +27,7 @@ export default function Login(
                   {msgStr("signIn")}
                 </h1>
 
-                {realm.internationalizationEnabled &&
-                  (assert(locale !== undefined), locale.supported.length > 1) && (
-                    <div className={kcClsx("kcLocaleMainClass")} id="kc-locale">
-                      <div
-                        id="kc-locale-wrapper"
-                        className={kcClsx("kcLocaleWrapperClass")}
-                      >
-                        <div
-                          id="kc-locale-dropdown"
-                          className={clsx(
-                            "menu-button-links",
-                            kcClsx("kcLocaleDropDownClass")
-                          )}
-                        >
-                          <button
-                            tabIndex={1}
-                            id="kc-current-locale-link"
-                            aria-label={msgStr("languages")}
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            aria-controls="language-switch1"
-                          >
-                            {labelBySupportedLanguageTag[currentLanguageTag]}
-                          </button>
-                          <ul
-                            role="menu"
-                            tabIndex={-1}
-                            aria-labelledby="kc-current-locale-link"
-                            aria-activedescendant=""
-                            id="language-switch1"
-                            className={kcClsx("kcLocaleListClass")}
-                          >
-                            {locale.supported.map(({ languageTag }, i) => (
-                              <li
-                                key={languageTag}
-                                className={kcClsx("kcLocaleListItemClass")}
-                                role="none"
-                              >
-                                <a
-                                  role="menuitem"
-                                  id={`language-${i + 1}`}
-                                  className={kcClsx("kcLocaleItemClass")}
-                                  href={getChangeLocaleUrl(languageTag)}
-                                >
-                                  {labelBySupportedLanguageTag[languageTag]}
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                <LangSelect {...props} />
               </div>
 
               <form className="space-y-4 md:space-y-6" action="#">
@@ -97,7 +40,6 @@ export default function Login(
                   </label>
                   <input
                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="name@company.com"
                     required
                   />
                 </div>
@@ -112,7 +54,6 @@ export default function Login(
                     type="password"
                     name="password"
                     id="password"
-                    placeholder="••••••••"
                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     required
                   />
