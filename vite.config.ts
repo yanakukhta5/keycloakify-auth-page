@@ -4,11 +4,14 @@ import { keycloakify } from "keycloakify/vite-plugin";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [
-        react(),
-        keycloakify({
-            extraThemeProperties: ["locales=ru,en"],
-            accountThemeImplementation: "none"
-        })
-    ]
+  plugins: [
+    react(),
+    keycloakify({
+      extraThemeProperties: ["locales=ru,en"],
+      accountThemeImplementation: "none",
+      startKeycloakOptions: {
+        dockerExtraArgs: ["-locales=ru,en"]
+      }
+    })
+  ]
 });

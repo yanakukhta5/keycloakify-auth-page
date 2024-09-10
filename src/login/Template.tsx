@@ -111,42 +111,47 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <div className="flex justify-between">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">{msgStr("signIn")}</h1>
+              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">{msgStr("signIn")}</h1>
 
-            {realm.internationalizationEnabled && (assert(locale !== undefined), locale.supported.length > 1) && (
-              <div className={kcClsx("kcLocaleMainClass")} id="kc-locale">
-                <div id="kc-locale-wrapper" className={kcClsx("kcLocaleWrapperClass")}>
-                  <div id="kc-locale-dropdown" className={clsx("menu-button-links", kcClsx("kcLocaleDropDownClass"))}>
-                    <button
-                      tabIndex={1}
-                      id="kc-current-locale-link"
-                      aria-label={msgStr("languages")}
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      aria-controls="language-switch1"
-                    >
-                      {labelBySupportedLanguageTag[currentLanguageTag]}
-                    </button>
-                    <ul
-                      role="menu"
-                      tabIndex={-1}
-                      aria-labelledby="kc-current-locale-link"
-                      aria-activedescendant=""
-                      id="language-switch1"
-                      className={kcClsx("kcLocaleListClass")}
-                    >
-                      {locale.supported.map(({ languageTag }, i) => (
-                        <li key={languageTag} className={kcClsx("kcLocaleListItemClass")} role="none">
-                          <a role="menuitem" id={`language-${i + 1}`} className={kcClsx("kcLocaleItemClass")} href={getChangeLocaleUrl(languageTag)}>
-                            {labelBySupportedLanguageTag[languageTag]}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
+              {realm.internationalizationEnabled && (assert(locale !== undefined), locale.supported.length > 1) && (
+                <div className={kcClsx("kcLocaleMainClass")} id="kc-locale">
+                  <div id="kc-locale-wrapper" className={kcClsx("kcLocaleWrapperClass")}>
+                    <div id="kc-locale-dropdown" className={clsx("menu-button-links", kcClsx("kcLocaleDropDownClass"))}>
+                      <button
+                        tabIndex={1}
+                        id="kc-current-locale-link"
+                        aria-label={msgStr("languages")}
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        aria-controls="language-switch1"
+                      >
+                        {labelBySupportedLanguageTag[currentLanguageTag]}
+                      </button>
+                      <ul
+                        role="menu"
+                        tabIndex={-1}
+                        aria-labelledby="kc-current-locale-link"
+                        aria-activedescendant=""
+                        id="language-switch1"
+                        className={kcClsx("kcLocaleListClass")}
+                      >
+                        {locale.supported.map(({ languageTag }, i) => (
+                          <li key={languageTag} className={kcClsx("kcLocaleListItemClass")} role="none">
+                            <a
+                              role="menuitem"
+                              id={`language-${i + 1}`}
+                              className={kcClsx("kcLocaleItemClass")}
+                              href={getChangeLocaleUrl(languageTag)}
+                            >
+                              {labelBySupportedLanguageTag[languageTag]}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
+              )}
             </div>
 
             <form className="space-y-4 md:space-y-6" action="#">
@@ -202,7 +207,9 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
               </button>
               <p className="text-sm font-light text-gray-500">
                 {msgStr("noAccount")}
-                <a href="#" className="font-bold text-primary-600 hover:underline ml-[10px]">
+                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                {/* @ts-ignore */}
+                <a href={url.registrationUrl} className="font-bold text-primary-600 hover:underline ml-[10px]">
                   {msgStr("signUp")}
                 </a>
               </p>
