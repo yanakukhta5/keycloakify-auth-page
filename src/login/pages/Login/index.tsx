@@ -6,7 +6,6 @@ import { clsx } from "keycloakify/tools/clsx";
 import type { I18n } from "../../i18n";
 import type { KcContext } from "../../KcContext";
 import { Text } from "./Text";
-import { useEffect } from "react";
 
 export default function Login(
   props: PageProps<Extract<KcContext, { pageId: "login.ftl" }>, I18n>
@@ -20,15 +19,8 @@ export default function Login(
 
   const { realm, locale, url } = kcContext;
 
-  useEffect(() => console.log(realm), [realm])
-
   return (
-    <Template
-      kcContext={kcContext}
-      i18n={i18n}
-      doUseDefaultCss={false}
-      headerNode={null}
-    >
+    <Template kcContext={kcContext} i18n={i18n} doUseDefaultCss={false} headerNode={null}>
       <section className="bg-gray-50 flex justify-center gap-[100px] pr-[60px]">
         <Text i18n={i18n} />
 
@@ -155,17 +147,20 @@ export default function Login(
                 >
                   {msgStr("signInShort")}
                 </button>
-                <p className="text-sm font-light text-gray-500">
-                  {msgStr("noAccount")}
-                  {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-                  {/* @ts-ignore */}
-                  <a
-                    href={url.registrationUrl}
-                    className="font-bold text-primary-600 hover:underline ml-[10px]"
-                  >
-                    {msgStr("signUp")}
-                  </a>
-                </p>
+
+                {realm.registrationAllowed && (
+                  <p className="text-sm font-light text-gray-500">
+                    {msgStr("noAccount")}
+                    {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                    {/* @ts-ignore */}
+                    <a
+                      href={url.registrationUrl}
+                      className="font-bold text-primary-600 hover:underline ml-[10px]"
+                    >
+                      {msgStr("signUp")}
+                    </a>
+                  </p>
+                )}
               </form>
             </div>
           </div>
