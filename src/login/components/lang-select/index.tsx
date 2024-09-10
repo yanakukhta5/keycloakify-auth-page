@@ -5,7 +5,6 @@ import { clsx } from "keycloakify/tools/clsx";
 
 import { type I18n } from "../../i18n";
 import type { KcContext } from "../../KcContext";
-import { useEffect } from "react";
 
 export const LangSelect = (props: PageProps<Extract<KcContext, unknown>, I18n>) => {
   const { kcContext, i18n, doUseDefaultCss, classes } = props;
@@ -14,8 +13,6 @@ export const LangSelect = (props: PageProps<Extract<KcContext, unknown>, I18n>) 
 
   const { msgStr, getChangeLocaleUrl, labelBySupportedLanguageTag, currentLanguageTag } =
     i18n;
-
-    useEffect(() => console.log(kcContext.realm), [kcContext.realm.internationalizationEnabled])
 
   const { realm, locale } = kcContext;
 
